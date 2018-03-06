@@ -15,13 +15,13 @@ type StyleProps = {
 
 class Style extends PureComponent<StyleProps> {
   static propTypes = {
-    // radiumConfig: PropTypes.object,
-    // rules: PropTypes.object,
+    radiumConfig: PropTypes.object,
+    rules: PropTypes.object,
     scopeSelector: PropTypes.string
   };
 
   static contextTypes = {
-    // _radiumConfig: PropTypes.object
+    _radiumConfig: PropTypes.object
   };
 
   static defaultProps: {scopeSelector: string} = {
