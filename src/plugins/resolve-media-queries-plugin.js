@@ -28,6 +28,13 @@ function _filterObject(
   }, {});
 }
 
+function _toCss(query, ruleCSS, mediaQueryClassName, forceMobile) {
+  if (forceMobile) {
+    return '.' + mediaQueryClassName + ruleCSS;
+  }
+  return query + '{ .' + mediaQueryClassName + ruleCSS + '}';
+}
+
 function _removeMediaQueries(style) {
   return Object.keys(style).reduce(
     (styleWithoutMedia, key) => {
@@ -48,7 +55,8 @@ function _topLevelRulesToCSS(
     hash,
     isNestedStyle,
     style,
-    userAgent
+    userAgent,
+    props
   }
 ) {
   let className = '';
@@ -65,7 +73,8 @@ function _topLevelRulesToCSS(
 
     // CSS classes cannot start with a number
     const mediaQueryClassName = 'rmq-' + hash(query + ruleCSS);
-    const css = query + '{ .' + mediaQueryClassName + ruleCSS + '}';
+    const css = _toCss(query, ruleCSS,mediaQueryClassName, props.forceMobile);
+    // const css = query + '{ .' + mediaQueryClassName + ruleCSS + '}';
 
     addCSS(css);
 
