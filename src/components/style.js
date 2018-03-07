@@ -4,7 +4,7 @@ import cssRuleSetToString from '../css-rule-set-to-string';
 
 import React, {PureComponent} from 'react';
 import type {Node} from 'react';
-import PropTypes from 'prop-types';
+import {object, string} from 'prop-types';
 import type {Config} from '../config';
 
 type StyleProps = {
@@ -15,13 +15,13 @@ type StyleProps = {
 
 class Style extends PureComponent<StyleProps> {
   static propTypes = {
-    radiumConfig: PropTypes.object,
-    rules: PropTypes.object,
-    scopeSelector: PropTypes.string
+    radiumConfig: object,
+    rules: object,
+    scopeSelector: string
   };
 
   static contextTypes = {
-    _radiumConfig: PropTypes.object
+    _radiumConfig: object
   };
 
   static defaultProps: {scopeSelector: string} = {

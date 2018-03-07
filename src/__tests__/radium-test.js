@@ -3,7 +3,7 @@
 import Radium from 'index';
 import MouseUpListener from 'plugins/mouse-up-listener';
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import {object} from 'prop-types';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
 import {getRenderOutput, getElement, getElements} from 'test-helpers';
@@ -802,7 +802,7 @@ describe('Radium blackbox tests', () => {
         return <div {...this.props} />;
       }
     }
-    TestComponent.propTypes = {style: PropTypes.object};
+    TestComponent.propTypes = {style: object};
     TestComponent = Radium(TestComponent);
 
     TestUtils.renderIntoDocument(<TestComponent style={[]} />);

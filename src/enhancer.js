@@ -1,8 +1,7 @@
 /* @flow */
 
 import {Component} from 'react';
-import PropTypes from 'prop-types';
-
+import {oneOfType, array, instanceOf, object} from 'prop-types';
 import StyleKeeper from './style-keeper';
 import resolveStyles from './resolve-styles';
 import getRadiumStyleState from './get-radium-style-state';
@@ -239,7 +238,7 @@ export default function enhanceWithRadium(
   if (RadiumEnhancer.propTypes && RadiumEnhancer.propTypes.style) {
     RadiumEnhancer.propTypes = {
       ...RadiumEnhancer.propTypes,
-      style: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
+      style: oneOfType([array, object])
     };
   }
 
@@ -249,14 +248,14 @@ export default function enhanceWithRadium(
 
   RadiumEnhancer.contextTypes = {
     ...RadiumEnhancer.contextTypes,
-    _radiumConfig: PropTypes.object,
-    _radiumStyleKeeper: PropTypes.instanceOf(StyleKeeper)
+    _radiumConfig: object,
+    _radiumStyleKeeper: instanceOf(StyleKeeper)
   };
 
   RadiumEnhancer.childContextTypes = {
     ...RadiumEnhancer.childContextTypes,
-    _radiumConfig: PropTypes.object,
-    _radiumStyleKeeper: PropTypes.instanceOf(StyleKeeper)
+    _radiumConfig: object,
+    _radiumStyleKeeper: instanceOf(StyleKeeper)
   };
 
   return RadiumEnhancer;

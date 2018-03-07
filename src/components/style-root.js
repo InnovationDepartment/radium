@@ -2,7 +2,7 @@
 
 import React, {PureComponent} from 'react';
 import type {Node} from 'react';
-import PropTypes from 'prop-types';
+import {instanceOf, object} from 'prop-types';
 
 import Enhancer from '../enhancer';
 import StyleKeeper from '../style-keeper';
@@ -55,12 +55,12 @@ class StyleRoot extends PureComponent<StyleRootProps> {
 }
 
 StyleRoot.contextTypes = {
-  _radiumConfig: PropTypes.object,
-  _radiumStyleKeeper: PropTypes.instanceOf(StyleKeeper)
+  _radiumConfig: object,
+  _radiumStyleKeeper: instanceOf(StyleKeeper)
 };
 
 StyleRoot.childContextTypes = {
-  _radiumStyleKeeper: PropTypes.instanceOf(StyleKeeper)
+  _radiumStyleKeeper: instanceOf(StyleKeeper)
 };
 
 StyleRoot = Enhancer(StyleRoot);
